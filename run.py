@@ -1,20 +1,27 @@
-expenses = []
-expense1 = {'amount': '43.00', 'category': 'travel', 'month':'February'}
-expenses.append(expense1)
-expense2 = {'amount' : '13,59', 'category': 'groceries', 'month':'March'}
-expenses.append(expense2)
+expenses = [{'amount': '43.00', 'category': 'travel', 'month':'February'}, {'amount' : '13,59', 'category': 'groceries', 'month':'March'}]
+incomes = [{'amount': '1500.53', 'category': 'salary', 'month':'February'}, {'amount' : '600.50', 'category': 'salary', 'month':'March'}]
+
 
 def add_expense(amount, category, month):
+    """
+    Adds a new expense to the list
+    """
     expense = {'amount': amount, 'category': category, 'month': month}
-    exspenses.append(expense)  
-    
+    expenses.append(expense)  
+
+
+def print_welcome():
+    """
+    Welcome message
+    """
+    print('\nWelcome to Expense Tracker.')
+    print_menu()
 
 def print_menu():
     """
     Menu area to choose an option
     """
 
-    print('\nWelcome to Expense Tracker.\n')
     print('----- Menu -----')
     print('1. Add a new transaction')
     print('2. View all transaction')
@@ -59,6 +66,7 @@ def remove_transaction():
     
 
 
+print_welcome()
 
 
-print_menu()
+

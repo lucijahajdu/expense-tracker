@@ -40,6 +40,8 @@ def print_menu():
     """
     Menu area to choose an option
     """
+    total = calculate_total_expenses()
+    income_total = calculate_total_income()
 
     print('----- Menu -----')
     print('1. Add a new transaction')
@@ -72,9 +74,26 @@ def print_menu():
         month = input('\n Enter the month of the income: ')
     elif (selection == '5'):
     elif (selection == '6'):
-
     else:
         print("Invalid option. Please enter a number between 1 and 3.")
+
+def add_transaction():
+    """ 
+    Adds a new transaction
+    """
+    complete = False
+    while not complete:
+        category = input('\n Enter expense category: ')
+        amount = input('\n Enter the expense amount: ')
+        if isfloat(amount):
+            amount = float(amount)
+            complete = True
+            month = input('\n Enter the month of the expenses: ')
+            add_expense(amount, category, month)
+            print_menu()
+        else:
+            print('Invalid input. Please try again.')
+            continue
 
 def view_all_transaction():
     print('\nHere is a view of all transactions.')

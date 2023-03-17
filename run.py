@@ -1,6 +1,7 @@
 expenses = [{'amount': '43.00', 'category': 'travel', 'month':'February'}, {'amount' : '13,59', 'category': 'groceries', 'month':'March'}]
 incomes = [{'amount': '1500.53', 'category': 'salary', 'month':'February'}, {'amount' : '600.50', 'category': 'salary', 'month':'March'}]
 
+
 def add_expense(amount, category, month):
     """
     Adds a new expense to the list
@@ -16,6 +17,7 @@ def print_welcome():
     print('\nWelcome to Expense Tracker.')
     print_menu()
 
+
 def calculate_total_expenses():
     """
     Calculates the total expenses
@@ -25,6 +27,7 @@ def calculate_total_expenses():
         total += float(expense['amount'])
     return total
 
+
 def calculate_total_income():
     """
     Calculates the total income
@@ -33,6 +36,7 @@ def calculate_total_income():
     for income in incomes:
         total += float(income['amount'])
     return total
+
 
 def print_menu():
     """
@@ -57,7 +61,7 @@ def print_menu():
    
     if (selection == '1'):
        add_transaction()
-    elif (selection =='2'):
+    elif (selection == '2'):
         view_all_transaction()
         print('\n\n')
         input('Press any key to continue.')
@@ -66,7 +70,7 @@ def print_menu():
         remove_transaction()
     elif (selection == '4'):
         category = input('\n Enter income category: ')
-        amount = input('\n Enter the income amount: ')
+        amount = float(input('\n Enter the income amount: '))
         month = input('\n Enter the month of the income: ')
         add_income(amount, category, month)
         print_menu()
@@ -99,6 +103,7 @@ def add_transaction():
         else:
             print('Invalid input. Please try again.')
             continue
+
 
 def isfloat(value):
     """
@@ -177,8 +182,6 @@ def remove_transaction():
             print('Invalid input. Please try again.')
         return False
     
-
-
 print_welcome()
 
 

@@ -26,10 +26,15 @@ def print_menu():
     print('1. Add a new transaction')
     print('2. View all transaction')
     print('3. Remove a transaction\n')
+    print('4. Add an income')
+    print('5. View all incomes.')
+    print('6. Remove an income.\n ')
+    print('Total expenses: € ')
+    print('Total income: €')
+    print('difference: €')
 
     selection = input('Please choose an option: ')
    
-    
     if (selection == '1'):
         category = input('\n Enter exspense category: ')
         amount = float(input('\nEnter the expense amount:'))
@@ -37,8 +42,18 @@ def print_menu():
         
     elif (selection =='2'):
         view_all_transaction()
+        print('\n\n')
+        input('Press any key to continue.')
+        print_menu()
     elif (selection == '3'):
         remove_transaction()
+    elif (selection == '4'):
+        category = input('\n Enter income category: ')
+        amount = input('\n Enter the income amount: ')
+        month = input('\n Enter the month of the income: ')
+    elif (selection == '5'):
+    elif (selection == '6'):
+        
     else:
         print("Invalid option. Please enter a number between 1 and 3.")
 

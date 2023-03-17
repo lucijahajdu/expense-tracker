@@ -17,6 +17,25 @@ def print_welcome():
     print('\nWelcome to Expense Tracker.')
     print_menu()
 
+def calculate_total_expenses():
+    """
+    Calculates the total expenses
+    """
+    total = 0
+    for expense in expenses:
+        total += float(expense['amount'])
+    return total
+
+
+def calculate_total_income():
+    """
+    Calculates the total income
+    """
+    total = 0
+    for income in incomes:
+        total += float(income['amount'])
+    return total
+
 def print_menu():
     """
     Menu area to choose an option
@@ -29,9 +48,9 @@ def print_menu():
     print('4. Add an income')
     print('5. View all incomes.')
     print('6. Remove an income.\n ')
-    print('Total expenses: € ')
-    print('Total income: €')
-    print('difference: €')
+    print('Total expenses: €', total)
+    print('Total income: €', income_total)
+    print('difference: €', income_total - total)
 
     selection = input('Please choose an option: ')
    
@@ -53,7 +72,7 @@ def print_menu():
         month = input('\n Enter the month of the income: ')
     elif (selection == '5'):
     elif (selection == '6'):
-        
+
     else:
         print("Invalid option. Please enter a number between 1 and 3.")
 

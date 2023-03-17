@@ -1,7 +1,6 @@
 expenses = [{'amount': '43.00', 'category': 'travel', 'month':'February'}, {'amount' : '13,59', 'category': 'groceries', 'month':'March'}]
 incomes = [{'amount': '1500.53', 'category': 'salary', 'month':'February'}, {'amount' : '600.50', 'category': 'salary', 'month':'March'}]
 
-
 def add_expense(amount, category, month):
     """
     Adds a new expense to the list
@@ -26,7 +25,6 @@ def calculate_total_expenses():
         total += float(expense['amount'])
     return total
 
-
 def calculate_total_income():
     """
     Calculates the total income
@@ -43,6 +41,7 @@ def print_menu():
     total = calculate_total_expenses()
     income_total = calculate_total_income()
 
+    print('\n')
     print('----- Menu -----')
     print('1. Add a new transaction')
     print('2. View all transaction')
@@ -52,15 +51,12 @@ def print_menu():
     print('6. Remove an income.\n ')
     print('Total expenses: €', total)
     print('Total income: €', income_total)
-    print('difference: €', income_total - total)
+    print('Difference: €', income_total - total)
 
     selection = input('Please choose an option: ')
    
     if (selection == '1'):
-        category = input('\n Enter exspense category: ')
-        amount = float(input('\nEnter the expense amount:'))
-        month = input('\n Enter the month of the exspense: ')
-        
+       add_transaction()
     elif (selection =='2'):
         view_all_transaction()
         print('\n\n')
@@ -85,6 +81,7 @@ def print_menu():
         print("Invalid option. Please enter a number between 1 and 6.")
         print_menu()
 
+
 def add_transaction():
     """ 
     Adds a new transaction
@@ -102,6 +99,16 @@ def add_transaction():
         else:
             print('Invalid input. Please try again.')
             continue
+
+def isfloat(value):
+    """
+    Checks if the value is a float
+    """
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False
 
 
 def add_income(amount, category, month):
@@ -128,7 +135,7 @@ def remove_income():
     """
     Remove an income
     """
-     while True:
+    while True:
         view_all_income()
         try:
             remove = int(input('Remove income: '))

@@ -72,6 +72,8 @@ def print_menu():
         category = input('\n Enter income category: ')
         amount = input('\n Enter the income amount: ')
         month = input('\n Enter the month of the income: ')
+        add_income(amount, category, month)
+        print_menu()
     elif (selection == '5'):
     elif (selection == '6'):
     else:
@@ -94,6 +96,15 @@ def add_transaction():
         else:
             print('Invalid input. Please try again.')
             continue
+
+
+def add_income(amount, category, month):
+    """
+    Adds a new income to the list
+    """
+    income = {'amount': amount, 'category': category, 'month': month}
+    incomes.append(income)  
+
 
 def view_all_transaction():
     print('\nHere is a view of all transactions.')

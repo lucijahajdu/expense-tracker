@@ -75,7 +75,12 @@ def print_menu():
         add_income(amount, category, month)
         print_menu()
     elif (selection == '5'):
+        view_all_income()
+        print('\n\n')
+        input('Press any key to continue.')
+        print_menu()
     elif (selection == '6'):
+        
     else:
         print("Invalid option. Please enter a number between 1 and 3.")
 
@@ -106,7 +111,23 @@ def add_income(amount, category, month):
     incomes.append(income)  
 
 
+def view_all_income(amount, category, month):
+    """
+    Views all incomes
+    """
+    print('\nHere is a view of all incomes.')
+    print("------------------------------------")
+    counter = 0
+    for income in incomes:
+        print(counter, " - ", income['amount'], " - ", income['category']," - ", income['month'])
+        counter += 1
+    
+
+
 def view_all_transaction():
+    """
+    Views all transactions
+    """
     print('\nHere is a view of all transactions.')
     print("------------------------------------")
     counter = 0

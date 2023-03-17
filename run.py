@@ -80,9 +80,10 @@ def print_menu():
         input('Press any key to continue.')
         print_menu()
     elif (selection == '6'):
-        
+        remove_income() 
     else:
-        print("Invalid option. Please enter a number between 1 and 3.")
+        print("Invalid option. Please enter a number between 1 and 6.")
+        print_menu()
 
 def add_transaction():
     """ 
@@ -121,7 +122,23 @@ def view_all_income(amount, category, month):
     for income in incomes:
         print(counter, " - ", income['amount'], " - ", income['category']," - ", income['month'])
         counter += 1
-    
+
+
+def remove_income():
+    """
+    Remove an income
+    """
+     while True:
+        view_all_income()
+        try:
+            remove = int(input('Remove income: '))
+            del incomes[remove]
+            print('Income removed.')
+            print_menu()
+            break
+        except:
+            print('Invalid input. Please try again.')
+        return False
 
 
 def view_all_transaction():
@@ -138,12 +155,16 @@ def view_all_transaction():
 
 
 def remove_transaction():
+    """
+    Remove a transaction
+    """
     while True:
         view_all_transaction()
-    
         try:
             remove = int(input('Remove transaction: '))
             del expenses[remove]
+            print('Transaction removed.')
+            print_menu()
             break
         except:
             print('Invalid input. Please try again.')

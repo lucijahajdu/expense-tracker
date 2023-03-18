@@ -1,6 +1,8 @@
 expenses = [{'amount': '43.00', 'category': 'travel', 'month': 'February'}, {'amount': '13.59', 'category': 'groceries', 'month': 'March'}]
 incomes = [{'amount': '1500.53', 'category': 'salary', 'month': 'February'}, {'amount': '600.50', 'category': 'salary', 'month': 'March'}]
 
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
 
 def add_expense(amount, category, month):
     """
@@ -53,6 +55,7 @@ def print_menu():
     print('4. Add an income')
     print('5. View all incomes.')
     print('6. Remove an income.\n ')
+    print('7. View expenses by month.')
     print('Total expenses: €', round(total, 2))
     print('Total income: €', round(income_total, 2))
     print('Difference: €', round(income_total - total, 2))
@@ -81,6 +84,8 @@ def print_menu():
         print_menu()
     elif (selection == '6'):
         remove_income() 
+    elif (selection == '7'):
+        expense_by_month()
     else:
         print("Invalid option. Please enter a number between 1 and 6.")
         print_menu()
@@ -145,7 +150,6 @@ def isfloat(value):
         return False
 
 
-
 def add_income(amount, category, month):
     """
     Adds a new income to the list
@@ -181,6 +185,38 @@ def remove_income():
         except:
             print('Invalid input. Please try again.')
         return False
+
+
+def expense_by_month():
+    """ 
+    Option to see expenses by month
+    """
+    while True:
+        month = input('\n Enter the month: ')
+        if month not in months:
+            print('Invalid month. Please try again.')
+            continue
+        expenses, month_total = get_expense_by_month(month)
+        counter = 0
+        for expense in expenses:
+            print(' €' , expense['amount'], " = ", expense['category'])
+            counter += 1
+        print('Total expenses for', month, 'is €', month_total)
+        break 
+
+
+def get_expense_by_month(month):
+    """
+    Returns the total expenses for a given month
+    """
+    return_list = []
+    for expense in expenses:
+        if expense['month'] == month:
+            return_list.append(expense)
+    month_total = 0
+    for expense in return_list:
+        month_total += float(expense['amount'])
+    return return_list, round(month_total, 2)
 
 
 

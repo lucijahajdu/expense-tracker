@@ -17,7 +17,7 @@ def print_welcome():
     Welcome message
     """
     print('\nWelcome to Expense Tracker.')
-    print_menu()
+    selection()
 
 
 def calculate_total_expenses():
@@ -49,46 +49,71 @@ def print_menu():
 
     print('\n')
     print('----- Menu -----')
-    print('1. Add a new transaction')
-    print('2. View all transaction')
-    print('3. Remove a transaction\n')
-    print('4. Add an income')
-    print('5. View all incomes.')
-    print('6. Remove an income.\n ')
-    print('7. View expenses by month.')
+    print('a. Transaction:')
+    print('1. Add transaction')
+    print('2. View all transactions')
+    print('3. View expenses by month')
+    print('4. Remove a transaction\n')
+    print('b. Income:')
+    print('1. Add an income')
+    print('2. View all incomes.')
+    print('3. Remove an income')
+    print('4. View incomes by month.\n')
+
     print('Total expenses: €', round(total, 2))
     print('Total income: €', round(income_total, 2))
     print('Difference: €', round(income_total - total, 2))
 
-    selection = input('Please choose an option: ')
 
-    if (selection == '1'):
-       add_transaction()
-    elif (selection == '2'):
-        view_all_transaction()
-        print('\n\n')
-        input('Press any key to continue.')
-        print_menu()
-    elif (selection == '3'):
-        remove_transaction()
-    elif (selection == '4'):
-        category = input('\n Enter income category: ')
-        amount = float(input('\n Enter the income amount: '))
-        month = input('\n Enter the month of the income: ')
-        add_income(amount, category, month)
-        print_menu()
-    elif (selection == '5'):
-        view_all_income()
-        print('\n\n')
-        input('Press any key to continue.')
-        print_menu()
-    elif (selection == '6'):
-        remove_income() 
-    elif (selection == '7'):
-        expense_by_month()
+def selection():
+    selection = input('Please selct a letter of a category: ')
+    if (selection == 'a'):
+        print('\n1. Add transaction')
+        print('2. View all transactions')
+        print('3. View expenses by month')
+        print('4. Remove a transaction\n')
+        subcategory = int(input('Please select a number of subcategory: '))
+        if (subcategory == '1'):
+            add_transaction()
+        elif (subcategory == '2'):
+            view_all_transaction()
+            print('\n\n')
+            input('Press any key to continue.')
+            selection()
+        elif (subcategory == '3'):
+            expense_by_month()
+        elif (subcategory == '4'):
+            remove_transaction()
+        else:
+            print('Invalid input. Please enter a number between 1 and 4 ')
+            selection()
+    elif (selection == 'b'):
+         print('\n1. Add an income')
+         print('2. View all incomes.')
+         print('3. Remove an income')
+         print('4. View incomes by month.\n')
+         subcategory = int(input('Please select a number of subcategory: '))
+         if (subcategory == '1'):
+            category = input('\n Enter income category: ')
+            amount = float(input('\n Enter the income amount: '))
+            month = input('\n Enter the month of the income: ')
+            add_income(amount, category, month)
+            selection()
+         elif (subcategory == '2'):
+            view_all_income()
+            print('\n\n')
+            input('Press any key to continue.')
+            selection()
+         elif (subcategory == '3'):
+            expense_by_month()
+         elif (subcategory == '4'):
+            remove_income()
+         else:
+            print('Invalid option. Please enter a number between 1 and 4.')
+            selection()
     else:
-        print("Invalid option. Please enter a number between 1 and 6.")
-        print_menu()
+        print('Invalid input. Select category A or B.')
+        selection()
 
 
 def add_transaction():

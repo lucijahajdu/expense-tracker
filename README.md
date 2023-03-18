@@ -48,8 +48,7 @@ Folowing tests were done:
 ### Fixed Bugs ###
 * Loop has been added to repeat request that menu options are showed again, after selecting an option in the menu area. Therefore it is not required to write python3 run.py into the terminal repeatedly.
 * When I wanted to see all transactions in the list that were previosly adeed, they were not visible. A typo has been found, and the bug was resolved.
-* 
-
+* ValueError: could not convert string to float: '13,59'.After correcting ',' to '.' (13.59) bug was resolved.
 ## Deployment ##
 
 ### Via gitpod ###

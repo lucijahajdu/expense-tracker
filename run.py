@@ -1,11 +1,11 @@
-expenses = [{'amount': '43.00', 'category': 'travel', 'month': 'February'}, {'amount': '13,59', 'category': 'groceries', 'month': 'March'}]
+expenses = [{'amount': '43.00', 'category': 'travel', 'month': 'February'}, {'amount': '13.59', 'category': 'groceries', 'month': 'March'}]
 incomes = [{'amount': '1500.53', 'category': 'salary', 'month': 'February'}, {'amount': '600.50', 'category': 'salary', 'month': 'March'}]
 
 
 def add_expense(amount, category, month):
     """
     Adds a new expense to the list
-    """
+    """   
     expense = {'amount': amount, 'category': category, 'month': month}
     expenses.append(expense)  
 
@@ -154,7 +154,7 @@ def add_income(amount, category, month):
     incomes.append(income)  
 
 
-def view_all_income(amount, category, month):
+def view_all_income():
     """
     Views all incomes
     """

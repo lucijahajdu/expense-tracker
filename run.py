@@ -1,5 +1,5 @@
-expenses = [{'amount': '43.00', 'category': 'travel', 'month':'February'}, {'amount' : '13,59', 'category': 'groceries', 'month':'March'}]
-incomes = [{'amount': '1500.53', 'category': 'salary', 'month':'February'}, {'amount' : '600.50', 'category': 'salary', 'month':'March'}]
+expenses = [{'amount': '43.00', 'category': 'travel', 'month': 'February'}, {'amount': '13,59', 'category': 'groceries', 'month': 'March'}]
+incomes = [{'amount': '1500.53', 'category': 'salary', 'month': 'February'}, {'amount': '600.50', 'category': 'salary', 'month': 'March'}]
 
 
 def add_expense(amount, category, month):
@@ -58,7 +58,7 @@ def print_menu():
     print('Difference: €', income_total - total)
 
     selection = input('Please choose an option: ')
-   
+
     if (selection == '1'):
        add_transaction()
     elif (selection == '2'):
@@ -104,6 +104,35 @@ def add_transaction():
             print('Invalid input. Please try again.')
             continue
 
+def view_all_transaction():
+    """
+    Views all transactions
+    """
+    print('\nHere is a view of all transactions.')
+    print("------------------------------------")
+    counter = 0
+    for expense in expenses:
+        print(counter, " - ", expense['amount'], " - ", expense['category']," - ", expense['month'])
+        counter += 1
+    print('\n\n')
+
+
+def remove_transaction():
+    """
+    Remove a transaction
+    """
+    while True:
+        view_all_transaction()
+        try:
+            remove = int(input('Remove transaction: '))
+            del expenses[remove]
+            print('Transaction removed.')
+            print_menu()
+            break
+        except:
+            print('Invalid input. Please try again.')
+        return False
+
 
 def isfloat(value):
     """
@@ -114,6 +143,7 @@ def isfloat(value):
         return True
     except ValueError:
         return False
+
 
 
 def add_income(amount, category, month):
@@ -153,36 +183,5 @@ def remove_income():
         return False
 
 
-def view_all_transaction():
-    """
-    Views all transactions
-    """
-    print('\nHere is a view of all transactions.')
-    print("------------------------------------")
-    counter = 0
-    for expense in expenses:
-        print(counter, " - ", expense['amount'], " - ", expense['category']," - ", expense['month'])
-        counter += 1
-    print('\n\n')
 
-
-def remove_transaction():
-    """
-    Remove a transaction
-    """
-    while True:
-        view_all_transaction()
-        try:
-            remove = int(input('Remove transaction: '))
-            del expenses[remove]
-            print('Transaction removed.')
-            print_menu()
-            break
-        except:
-            print('Invalid input. Please try again.')
-        return False
-    
 print_welcome()
-
-
-

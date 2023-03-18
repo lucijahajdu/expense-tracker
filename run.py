@@ -87,7 +87,7 @@ def print_menu():
     elif (selection == '6'):
         remove_income() 
     elif (selection == '7'):
-        get_expense_by_month()
+        expense_by_month()
     elif (selection == '8'):
         income_by_month()
     else:
@@ -198,7 +198,7 @@ def expense_by_month():
         if month not in months:
             print('Invalid month. Please try again.')
             continue
-        month_total = get_expense_by_month(month)
+        expenses, month_total = get_expense_by_month(month)
         counter = 0
         for expense in expenses:
             print(' €' , expense['amount'], " = ", expense['category'])
@@ -230,7 +230,7 @@ def income_by_month():
         if month not in months:
             print('Invalid month. Please try again.')
             continue
-        month_total = get_income_by_month(month)
+        incomes, month_total = get_income_by_month(month)
         counter = 0
         for income in incomes:
             print(' €' , income['amount'], " = ", income['category'])

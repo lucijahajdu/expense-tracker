@@ -25,7 +25,7 @@ def calculate_total_expenses():
     total = 0
     for expense in expenses:
         total += float(expense['amount'])
-    return total
+    return round(total, 2)
 
 
 def calculate_total_income():
@@ -53,9 +53,9 @@ def print_menu():
     print('4. Add an income')
     print('5. View all incomes.')
     print('6. Remove an income.\n ')
-    print('Total expenses: €', total)
-    print('Total income: €', income_total)
-    print('Difference: €', income_total - total)
+    print('Total expenses: €', round(total, 2))
+    print('Total income: €', round(income_total, 2))
+    print('Difference: €', round(income_total - total, 2))
 
     selection = input('Please choose an option: ')
 

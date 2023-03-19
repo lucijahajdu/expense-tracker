@@ -70,14 +70,14 @@ def print_menu():
     print('Total income: €', round(income_total, 2))
     print('Difference: €', round(income_total - total, 2))
 
-    selection = input('Please choose an option: ')
+    selection = input('Please choose an option:\n')
 
     if (selection == '1'):
        add_transaction()
     elif (selection == '2'):
         view_all_transaction()
         print('\n\n')
-        input('Press any key to continue.')
+        input('Press any key to continue.\n')
         print_menu()
     elif (selection == '3'):
         remove_transaction()
@@ -86,13 +86,13 @@ def print_menu():
     elif (selection == '5'):
         view_all_income()
         print('\n\n')
-        input('Press any key to continue.')
+        input('Press any key to continue.\n')
         print_menu()
     elif (selection == '6'):
         remove_income() 
     elif (selection == '7'):
         expense_by_month()
-        input('Press any key to continue.')
+        input('Press any key to continue.\n')
         print_menu()
     elif (selection == '8'):
         income_by_month()
@@ -107,12 +107,12 @@ def add_transaction():
     """
     complete = False
     while not complete:
-        category = input('\n Enter expense category: ')
-        amount = input('\n Enter the expense amount: ')
+        category = input('\n Enter expense category:\n')
+        amount = input('\n Enter the expense amount:\n')
         if isfloat(amount):
             amount = float(amount)
             complete = True
-            month = input('\n Enter the month of the expenses: ')
+            month = input('\n Enter the month of the expenses:\n')
             add_expense(amount, category, month)
             print_menu()
         else:
@@ -140,7 +140,7 @@ def remove_transaction():
     while True:
         view_all_transaction()
         try:
-            remove = int(input('Remove transaction: '))
+            remove = int(input('Remove transaction:\n'))
             del expenses[remove]
             print_menu()
             break
@@ -166,12 +166,12 @@ def income_added():
     """
     complete = False
     while not complete:
-        category = input('\n Enter income category: ')
-        amount = input('\n Enter the income amount: ')
+        category = input('\n Enter income category:\n')
+        amount = input('\n Enter the income amount:\n')
         if isfloat(amount):
             amount = float(amount)
             complete = True
-            month = input('\n Enter the month of the income: ')
+            month = input('\n Enter the month of the income:\n')
             add_income(amount, category, month)
             print_menu()
         else:
@@ -198,7 +198,7 @@ def remove_income():
     while True:
         view_all_income()
         try:
-            remove = int(input('Remove income: '))
+            remove = int(input('Remove income:\n'))
             del incomes[remove]
             print('Income removed.')
             print_menu()
@@ -213,7 +213,7 @@ def expense_by_month():
     Option to see expenses by month
     """
     while True:
-        month = input('\n Enter the month: ')
+        month = input('\n Enter the month:\n')
         if month not in months:
             print('Invalid month. Please try again.')
             continue
@@ -246,7 +246,7 @@ def income_by_month():
     Option to see incomes by month
     """
     while True:
-        month = input('\n Enter the month: ')
+        month = input('\n Enter the month:\n')
         if month not in months:
             print('Invalid month. Please try again.')
             continue
@@ -271,6 +271,5 @@ def get_income_by_month(month):
     for income in return_list:
         month_total += float(income['amount'])
     return return_list, round(month_total, 2)
-
 
 print_welcome()

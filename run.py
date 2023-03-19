@@ -81,6 +81,7 @@ def print_menu():
         print_menu()
     elif (selection == '3'):
         remove_transaction()
+        print_menu()
     elif (selection == '4'):
         income_added()
     elif (selection == '5'):
@@ -89,7 +90,9 @@ def print_menu():
         input('Press any key to continue.\n')
         print_menu()
     elif (selection == '6'):
-        remove_income() 
+        remove_income()
+        print('\n')
+        input('Press any key to continue.\n')
     elif (selection == '7'):
         expense_by_month()
         input('Press any key to continue.\n')
@@ -144,8 +147,9 @@ def remove_transaction():
             del expenses[remove]
             print_menu()
             break
-        except ValueError:
+        except:
             print('Invalid input. Please try again.')
+            continue
         return False
         
 
@@ -203,8 +207,9 @@ def remove_income():
             print('Income removed.')
             print_menu()
             break
-        except ValueError:
+        except:
             print('Invalid input. Please try again.')
+            continue
             return False
 
 

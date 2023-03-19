@@ -1,15 +1,18 @@
-expenses = [{'amount': '43.00', 'category': 'travel', 'month': 'February'}, {'amount': '13.59', 'category': 'groceries', 'month': 'March'}]
-incomes = [{'amount': '1500.53', 'category': 'salary', 'month': 'February'}, {'amount': '600.50', 'category': 'salary', 'month': 'March'}]
+expenses = [{'amount': '43.00', 'category': 'travel',   'month': 'February'},
+            {'amount': '13.59', 'category': 'groceries', 'month': 'March'}]
+incomes = [{'amount': '1500.53', 'category': 'salary', 'month': 'February'},
+           {'amount': '600.50', 'category': 'salary', 'month': 'March'}]
 
-months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+          'August', 'September', 'October', 'November', 'December']
 
 
 def add_expense(amount, category, month):
     """
     Adds a new expense to the list
-    """   
+    """
     expense = {'amount': amount, 'category': category, 'month': month}
-    expenses.append(expense)  
+    expenses.append(expense)
 
 
 def add_income(amount, category, month):
@@ -17,7 +20,7 @@ def add_income(amount, category, month):
     Adds a new income to the list
     """
     income = {'amount': amount, 'category': category, 'month': month}
-    incomes.append(income)  
+    incomes.append(income)
 
 
 def print_welcome():
@@ -73,7 +76,7 @@ def print_menu():
     selection = input('Please choose an option:\n')
 
     if (selection == '1'):
-       add_transaction()
+        add_transaction()
     elif (selection == '2'):
         view_all_transaction()
         print('\n\n')
@@ -105,7 +108,7 @@ def print_menu():
 
 
 def add_transaction():
-    """ 
+    """
     Adds a new transaction
     """
     complete = False
@@ -131,7 +134,8 @@ def view_all_transaction():
     print("------------------------------------")
     counter = 0
     for expense in expenses:
-        print(counter, " - ", expense['amount'], " - ", expense['category'], " - ", expense['month'])
+        print(counter, " - ", expense['amount'], " - ",
+              expense['category'], " - ", expense['month'])
         counter += 1
     print('\n\n')
 
@@ -151,7 +155,7 @@ def remove_transaction():
             print('Invalid input. Please try again.')
             continue
         return False
-        
+
 
 def isfloat(value):
     """
@@ -165,7 +169,7 @@ def isfloat(value):
 
 
 def income_added():
-    """ 
+    """
     Adds a new income
     """
     complete = False
@@ -191,7 +195,8 @@ def view_all_income():
     print("------------------------------------")
     counter = 0
     for income in incomes:
-        print(counter, " - ", income['amount'], " - ", income['category'], " - ", income['month'])
+        print(counter, " - ", income['amount'],
+              " - ", income['category'], " - ", income['month'])
         counter += 1
 
 
@@ -214,7 +219,7 @@ def remove_income():
 
 
 def expense_by_month():
-    """ 
+    """
     Option to see expenses by month
     """
     while True:
@@ -228,8 +233,7 @@ def expense_by_month():
             print(' €', expense['amount'], " = ", expense['category'])
             counter += 1
         print('Total expenses for', month, 'is €', month_total)
-        break 
-    
+        break
 
 
 def get_expense_by_month(month):
@@ -247,7 +251,7 @@ def get_expense_by_month(month):
 
 
 def income_by_month():
-    """ 
+    """
     Option to see incomes by month
     """
     while True:
@@ -261,7 +265,7 @@ def income_by_month():
             print(' €', income['amount'], " = ", income['category'])
             counter += 1
         print('Total income for', month, 'is €', month_total)
-        break 
+        break
 
 
 def get_income_by_month(month):
@@ -276,5 +280,6 @@ def get_income_by_month(month):
     for income in return_list:
         month_total += float(income['amount'])
     return return_list, round(month_total, 2)
+
 
 print_welcome()
